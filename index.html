@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sadia Afrin Mim — Responsible AI &amp; Human-Centric Software Engineering</title>
+<meta name="description" content="Sadia Afrin Mim, Ph.D. student in Computer Science at George Mason University, researching software discrimination testing, causal fairness, and human-centered responsible AI.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6f8f7; --surface:#ffffff; --ink:#14201b; --muted:#56635c; --line:#dde5e0;
+    --accent:#1d6b4e; --accent-soft:#e2efe8; --warm:#2a7a5c;
+    --radius:14px; --max:1040px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#101614; --surface:#17201c; --ink:#e8efeb; --muted:#9db0a6; --line:#25312b;
+      --accent:#6fcf9f; --accent-soft:#1a2e25; --warm:#8fdab4; }
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+  a{color:var(--accent);text-decoration:none} a:hover{text-decoration:underline}
+  h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:600;line-height:1.2;margin:0 0 .5em}
+  h1{font-size:clamp(2.1rem,4.5vw,3.1rem);letter-spacing:-.01em}
+  h2{font-size:1.75rem} h3{font-size:1.15rem}
+  p{margin:0 0 1em}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+
+  /* Header / nav */
+  header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .bar{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{font-family:Fraunces,serif;font-weight:600;font-size:1.15rem;color:var(--ink)}
+  .brand:hover{text-decoration:none}
+  nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+  nav a{display:block;padding:8px 12px;border-radius:999px;color:var(--muted);font-size:.93rem;font-weight:500}
+  nav a:hover{color:var(--ink);background:var(--accent-soft);text-decoration:none}
+  nav a.active{color:var(--accent);background:var(--accent-soft)}
+  .menu-btn{display:none;background:none;border:1px solid var(--line);border-radius:10px;padding:8px 12px;color:var(--ink);font:inherit;cursor:pointer}
+  @media (max-width:860px){
+    .menu-btn{display:block}
+    nav{position:absolute;top:64px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);display:none}
+    nav.open{display:block}
+    nav ul{flex-direction:column;padding:10px 16px 16px}
+  }
+
+  main{padding:48px 0 80px}
+  section.view{display:none;animation:fade .35s ease}
+  section.view.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+  .eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--warm);font-weight:600;margin-bottom:10px}
+  .lead{font-size:1.15rem;color:var(--muted);max-width:62ch}
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:center;padding-bottom:40px;border-bottom:1px solid var(--line)}
+  .avatar{width:220px;height:220px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--warm));display:grid;place-items:center;color:#fff;font-family:Fraunces,serif;font-size:4rem;justify-self:end;overflow:hidden}
+  .avatar img{width:100%;height:100%;object-fit:cover}
+  @media (max-width:760px){.hero{grid-template-columns:1fr}.avatar{justify-self:start;width:140px;height:140px;font-size:2.6rem;order:-1}}
+  .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid var(--line);color:var(--ink);font-weight:500;font-size:.94rem;background:var(--surface)}
+  .btn:hover{border-color:var(--accent);text-decoration:none}
+  .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+  @media (prefers-color-scheme: dark){.btn.primary{color:#0f1713}}
+  .btn svg{width:16px;height:16px}
+
+  .grid{display:grid;gap:18px}
+  .g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+  .g2{grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+  .card h3{margin-bottom:.4em}
+  .card p:last-child{margin-bottom:0}
+  .muted{color:var(--muted)}
+  .small{font-size:.9rem}
+  .block{margin-top:56px}
+  .block>h2{margin-bottom:20px}
+
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:40px}
+  @media (max-width:700px){.stats{grid-template-columns:repeat(2,1fr)}}
+  .stat b{display:block;font-family:Fraunces,serif;font-size:2.2rem;font-weight:600;color:var(--accent);line-height:1.1}
+  .stat span{font-size:.88rem;color:var(--muted)}
+
+  .tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .tag{font-size:.8rem;padding:4px 10px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:500}
+
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.bullets{padding-left:1.1em;margin:.4em 0 0} ul.bullets li{margin-bottom:.35em}
+
+  /* Timeline */
+  .tl{border-left:2px solid var(--line);margin-left:6px;padding-left:28px}
+  .tl-item{position:relative;padding-bottom:34px}
+  .tl-item:last-child{padding-bottom:0}
+  .tl-item::before{content:"";position:absolute;left:-36px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:3px solid var(--accent)}
+  .when{font-size:.85rem;color:var(--warm);font-weight:600;letter-spacing:.02em}
+  .where{color:var(--muted);font-style:italic}
+
+  /* Publications */
+  .filters{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px}
+  .chip{border:1px solid var(--line);background:var(--surface);color:var(--muted);padding:7px 14px;border-radius:999px;font:500 .88rem Inter,sans-serif;cursor:pointer}
+  .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+  @media (prefers-color-scheme: dark){.chip.on{color:#0f1713}}
+  .pub{display:grid;grid-template-columns:70px 1fr;gap:18px;padding:22px 0;border-bottom:1px solid var(--line)}
+  .pub:last-child{border-bottom:0}
+  .pub .yr{font-family:Fraunces,serif;font-size:1.3rem;color:var(--muted)}
+  .pub .t{font-weight:600;font-size:1.05rem;margin-bottom:4px}
+  .pub .a{font-size:.93rem;color:var(--muted)} .pub .a b{color:var(--ink)}
+  .pub .v{font-size:.93rem;font-style:italic;margin-top:2px}
+  .badge{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:6px;margin-left:6px;vertical-align:middle;background:color-mix(in srgb,var(--warm) 15%,transparent);color:var(--warm)}
+
+  .fit{border-left:4px solid var(--warm)}
+  table.list{width:100%;border-collapse:collapse}
+  table.list td{padding:14px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  table.list td:first-child{width:80px;color:var(--warm);font-weight:600;font-size:.9rem}
+  table.list tr:last-child td{border-bottom:0}
+
+  footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:.88rem}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#home">Sadia Afrin Mim</a>
+    <button class="menu-btn" aria-label="Open menu" onclick="document.querySelector('nav').classList.toggle('open')">Menu</button>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="#recognition">Talks &amp; Awards</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+
+<!-- ================= HOME ================= -->
+<section class="view" id="view-home">
+  <div class="hero">
+    <div>
+      <div class="eyebrow">Ph.D. Student · Computer Science · George Mason University</div>
+      <h1>Making AI systems fairer by designing for the people who test them.</h1>
+      <p class="lead">I study the human side of responsible AI: how practitioners find, understand, and fix discrimination in data-driven software. My work pairs empirical studies of real users with the tools they need, from causal fairness testers to LLM-driven test generation.</p>
+      <div class="btns">
+        <a class="btn primary" href="cv.pdf" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0l-4-4m4 4l4-4M5 21h14"/></svg>Download CV</a>
+        <a class="btn" href="mailto:safrinmi@gmu.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>safrinmi@gmu.edu</a>
+        <a class="btn" href="https://www.linkedin.com/in/sadia-afrin-mim-38a51919b" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 11-.01 5 2.5 2.5 0 01.01-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05C20.6 8.65 21 11.3 21 14.7V21h-4v-5.6c0-1.34-.02-3.06-1.86-3.06-1.87 0-2.15 1.46-2.15 2.96V21H9z"/></svg>LinkedIn</a>
+        <a class="btn" href="https://github.com/sadia-afrin-mim" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 00-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 015.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0012 .5z"/></svg>GitHub</a>
+      </div>
+    </div>
+    <div class="avatar"><img src="photo.jpg" alt="Sadia Afrin Mim"></div>
+  </div>
+
+
+  <div class="block">
+    <h2>Research interests</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Human-centered responsible AI</h3><p class="muted">How ML practitioners actually reason about fairness, where tools fail them, and what support helps newcomers succeed.</p></div>
+      <div class="card"><h3>Causal fairness &amp; discrimination testing</h3><p class="muted">Testing techniques that expose bias in data-driven systems, including bias hidden behind proxy features.</p></div>
+      <div class="card"><h3>LLMs for trustworthy software</h3><p class="muted">Using large language models to automatically generate discriminatory test cases at scale.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="card fit">
+      <div class="eyebrow">Why AI &amp; Human Systems</div>
+      <h3>Where my work meets the people using AI</h3>
+      <p>My research sits exactly between AI systems and the humans who build, evaluate, and are affected by them. I run empirical studies with ML practitioners and students, turn what I learn into process frameworks and tools, and publish at venues like VL/HCC and FSE. A research internship focused on AI and human systems would let me bring that mixed-methods, practitioner-centered approach to products used by millions of people.</p>
+      <ul class="bullets">
+        <li><b>Empirical HCI methods:</b> user studies with ML practitioners and students on fairness tools.</li>
+        <li><b>Tool building:</b> causal fairness testers, classroom tooling, and LLM-based test generation.</li>
+        <li><b>Industry grounding:</b> two years as a software QA engineer working with cross-functional teams.</li>
+        <li><b>Communication:</b> invited talks, two VL/HCC Graduate Consortium papers, and teaching five courses.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Latest news</h2>
+    <table class="list">
+      <tr><td>2026</td><td>Graduate Consortium paper at <b>VL/HCC 2026</b>: “Towards Onboarding Newcomers to Software Discrimination Testing.”</td></tr>
+      <tr><td>2026</td><td>Paper accepted at <b>VL/HCC 2026</b>: “Understanding Gaps in ML Fairness Tool Design: An Experience Report.”</td></tr>
+      <tr><td>2026</td><td>Paper at the <b>TRUST workshop @ ASE 2026</b> on LLMs for automated discriminatory test generation.</td></tr>
+      <tr><td>2026</td><td>Serving on the Program Committee for <b>CHASE 2026</b>.</td></tr>
+      <tr><td>2026</td><td>Received the <b>CEC Software Engineering Scholarship</b>.</td></tr>
+      <tr><td>2026</td><td>Invited talk at the <b>ACM Capital Region Celebration of Women in Computing</b>.</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ================= RESEARCH ================= -->
+<section class="view" id="view-research">
+  <div class="eyebrow">Research</div>
+  <h1>Research projects</h1>
+  <p class="lead">My research combines empirical studies with tool development to help practitioners identify, evaluate, and mitigate discriminatory outcomes in data-driven systems.</p>
+
+  <div class="grid block" style="margin-top:36px">
+    <div class="card">
+      <div class="eyebrow">Project 01 · Human-centered study</div>
+      <h3>Towards Supporting Newcomers in Causal Fairness Testing</h3>
+      <ul class="bullets">
+        <li>Conducted an empirical study of ML practitioners using a causal fairness testing tool for the first time.</li>
+        <li>Identified the challenges and decision-making involved in performing causal fairness testing.</li>
+        <li>Developed a preliminary process framework of the key stages of causal fairness testing to guide newcomer onboarding.</li>
+      </ul>
+      <div class="tags"><span class="tag">User study</span><span class="tag">Causal fairness</span><span class="tag">Practitioner onboarding</span><span class="tag">Process framework</span></div>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">Project 02 · Education &amp; tooling</div>
+      <h3>Integrating Fairness Testing into Software Engineering Education</h3>
+      <ul class="bullets">
+        <li>Developed instructional materials on software fairness and discrimination testing for an Ethics &amp; Equity in Software Engineering course.</li>
+        <li>Designed and built a tool for hands-on classroom exercises in systematic discrimination testing.</li>
+        <li>Ran an empirical study of students' learning experiences and perceptions of these activities.</li>
+      </ul>
+      <div class="tags"><span class="tag">Tool design</span><span class="tag">SE education</span><span class="tag">Empirical study</span></div>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">Project 03 · Testing technique</div>
+      <h3>Uncovering Proxy-Masked Software Discrimination</h3>
+      <ul class="bullets">
+        <li>Built a causal fairness tester that finds bias hidden behind proxy features.</li>
+        <li>Designed proxy discovery, minimal masking-set search, and realism constraints.</li>
+      </ul>
+      <div class="tags"><span class="tag">Causal testing</span><span class="tag">Proxy features</span><span class="tag">Search-based testing</span></div>
+    </div>
+
+    <div class="card">
+      <div class="eyebrow">Ongoing thread · LLMs</div>
+      <h3>Large Language Models for Automated Discriminatory Test Generation</h3>
+      <p class="muted">Exploring how LLMs can generate discriminatory test inputs automatically, lowering the effort needed to audit software for bias. Published at the TRUST workshop at ASE 2026.</p>
+      <div class="tags"><span class="tag">LLMs</span><span class="tag">Test generation</span><span class="tag">Trustworthy AI</span></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h2>Methods &amp; skills</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Research methods</h3><p class="muted small">User studies, interviews, think-aloud sessions, qualitative analysis, experience reports, mining open-source repositories.</p></div>
+      <div class="card"><h3>Fairness &amp; ML</h3><p class="muted small">Causal fairness testing, discrimination testing, fairness interventions, causal testing for deep neural networks.</p></div>
+      <div class="card"><h3>Software engineering</h3><p class="muted small">Python, tool development, test design, manual &amp; automated testing, API, regression and integration testing.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PUBLICATIONS ================= -->
+<section class="view" id="view-publications">
+  <div class="eyebrow">Publications</div>
+  <h1>Papers</h1>
+  <p class="lead">Peer-reviewed work on fairness tools, discrimination testing, and the people who use them.</p>
+
+  <div id="pubs" style="margin-top:28px">
+    <div class="pub">
+      <div class="yr">2026</div>
+      <div><div class="t">Towards Onboarding Newcomers to Software Discrimination Testing</div>
+      <div class="a"><b>Sadia Afrin Mim</b></div>
+      <div class="v">2026 IEEE Symposium on Visual Languages and Human-Centric Computing (VL/HCC) <span class="badge">Graduate Consortium</span></div></div>
+    </div>
+    <div class="pub">
+      <div class="yr">2026</div>
+      <div><div class="t">Understanding Gaps in ML Fairness Tool Design: An Experience Report</div>
+      <div class="a"><b>Sadia Afrin Mim</b>, Fatema Tuz Zohra, Brittany Johnson</div>
+      <div class="v">43rd IEEE Symposium on Visual Languages and Human-Centric Computing (VL/HCC)</div></div>
+    </div>
+    <div class="pub">
+      <div class="yr">2026</div>
+      <div><div class="t">Leveraging Large Language Models for Automated Discriminatory Test Generation</div>
+      <div class="a"><b>Sadia Afrin Mim</b>, Fatema Tuz Zohra, Brittany Johnson</div>
+      <div class="v">Workshop on Trustworthy and Responsible Autonomous Systems (TRUST), co-located with ASE 2026</div></div>
+    </div>
+    <div class="pub">
+      <div class="yr">2025</div>
+      <div><div class="t">Towards Practical Software Discrimination Testing</div>
+      <div class="a"><b>Sadia Afrin Mim</b></div>
+      <div class="v">43rd IEEE Symposium on Visual Languages and Human-Centric Computing (VL/HCC) <span class="badge">Graduate Consortium</span></div></div>
+    </div>
+    <div class="pub">
+      <div class="yr">2025</div>
+      <div><div class="t">An Investigation into Open Source Fairness Tool Sustainability</div>
+      <div class="a"><b>Sadia Afrin Mim</b>, Fatemeh Vares, Andrew Meenly, Brittany Johnson</div>
+      <div class="v">Workshop on Responsible Software Engineering (ResponsibleSE), co-located with FSE 2025</div></div>
+    </div>
+    <div class="pub">
+      <div class="yr">2025</div>
+      <div><div class="t">An Exploratory Analysis of Available Fairness Interventions in Open Source</div>
+      <div class="a"><b>Sadia Afrin Mim</b>, Fatema Tuz Zohra, Justin Smith, Brittany Johnson</div>
+      <div class="v">Workshop on Fairness in Software Systems, co-located with SANER 2025</div></div>
+    </div>
+    <div class="pub">
+      <div class="yr">2024</div>
+      <div><div class="t">Pyholmes: Causal Testing for Deep Neural Networks in Python</div>
+      <div class="a">Wren McQueary, <b>Sadia Afrin Mim</b>, Md Nishat Raihan, Justin Smith, Brittany Johnson</div>
+      <div class="v">32nd ACM International Conference on the Foundations of Software Engineering (FSE)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section class="view" id="view-experience">
+  <div class="eyebrow">Experience</div>
+  <h1>Experience &amp; education</h1>
+
+  <div class="grid g2 block" style="margin-top:36px">
+    <div>
+      <h2>Work</h2>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="when">2022 – Present</div>
+          <h3>Graduate Teaching Assistant</h3>
+          <div class="where">George Mason University</div>
+          <p class="small muted" style="margin-top:8px">TA for five courses spanning ethics, UI design, testing, algorithms, and programming. See <a href="#teaching">Teaching</a>.</p>
+        </div>
+        <div class="tl-item">
+          <div class="when">2020 – 2022</div>
+          <h3>Software Quality Assurance Engineer</h3>
+          <div class="where">Dynamic Solution Innovators Ltd</div>
+          <ul class="bullets small">
+            <li>Designed and executed manual and automated test cases for functionality and reliability.</li>
+            <li>Ran functional, regression, integration, and API testing to find and report defects.</li>
+            <li>Worked with developers and cross-functional teams on troubleshooting and requirements analysis across the development lifecycle.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <h2>Education</h2>
+      <div class="tl">
+        <div class="tl-item">
+          <div class="when">2022 – Present</div>
+          <h3>Ph.D. in Computer Science</h3>
+          <div class="where">George Mason University</div>
+        </div>
+        <div class="tl-item">
+          <div class="when">2022 – 2025</div>
+          <h3>M.S. in Software Engineering</h3>
+          <div class="where">George Mason University</div>
+        </div>
+        <div class="tl-item">
+          <div class="when">2016 – 2019</div>
+          <h3>B.S. in Computer Science &amp; Engineering</h3>
+          <div class="where">University of Dhaka</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TEACHING ================= -->
+<section class="view" id="view-teaching">
+  <div class="eyebrow">Teaching</div>
+  <h1>Teaching &amp; mentoring</h1>
+  <p class="lead">Graduate Teaching Assistant at George Mason University since 2022. I also built course materials and a classroom tool for teaching fairness testing.</p>
+
+  <div class="grid g3 block" style="margin-top:36px">
+    <div class="card"><div class="eyebrow">SWE 691</div><h3>Ethics &amp; Equity in Software Engineering</h3><p class="muted small">Developed instructional materials and a hands-on tool for discrimination testing exercises.</p></div>
+    <div class="card"><div class="eyebrow">SWE 632</div><h3>User Interface Design and Development</h3></div>
+    <div class="card"><div class="eyebrow">SWE 637</div><h3>Software Testing</h3></div>
+    <div class="card"><div class="eyebrow">CS 583</div><h3>Design &amp; Analysis of Algorithms</h3></div>
+    <div class="card"><div class="eyebrow">CS 211</div><h3>Introduction to Object-Oriented Programming</h3></div>
+    <div class="card"><div class="eyebrow">2018</div><h3>Math Instructor</h3><p class="muted small">Shabab Murshid Development Foundation (volunteer).</p></div>
+  </div>
+</section>
+
+<!-- ================= RECOGNITION ================= -->
+<section class="view" id="view-recognition">
+  <div class="eyebrow">Talks, awards &amp; service</div>
+  <h1>Recognition &amp; community</h1>
+
+  <div class="grid g2 block" style="margin-top:36px">
+    <div class="card">
+      <h2>Invited talks</h2>
+      <table class="list">
+        <tr><td>2026</td><td>ACM Capital Region Celebration of Women in Computing</td></tr>
+        <tr><td>2024</td><td>Eastern Atlantic Students in Software Engineering Colloquium, The College of William &amp; Mary</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h2>Awards &amp; honors</h2>
+      <table class="list">
+        <tr><td>2026</td><td>CEC Software Engineering Scholarship</td></tr>
+        <tr><td>2023</td><td>Research Fellowship, Center for Advancing Systems Science and Bioengineering Innovation</td></tr>
+        <tr><td>2019</td><td>Best Paper Award, IEEE WIECON</td></tr>
+      </table>
+    </div>
+    <div class="card" style="grid-column:1/-1">
+      <h2>Professional service &amp; volunteering</h2>
+      <table class="list">
+        <tr><td>2026</td><td>Program Committee, 20th International Conference on Cooperative and Human Aspects of Software Engineering (CHASE)</td></tr>
+        <tr><td>2025</td><td>Student Volunteer, 33rd ACM International Conference on the Foundations of Software Engineering (FSE)</td></tr>
+        <tr><td>2018</td><td>Math Instructor, Shabab Murshid Development Foundation</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="view" id="view-contact">
+  <div class="eyebrow">Contact</div>
+  <h1>Let's talk</h1>
+  <p class="lead">I'm looking for research internship opportunities in human-centered and responsible AI. I'd be glad to hear from researchers and teams working on how people build with, evaluate, and are affected by AI systems.</p>
+
+  <div class="grid g3 block" style="margin-top:36px">
+    <div class="card"><h3>Email</h3><p><a href="mailto:safrinmi@gmu.edu">safrinmi@gmu.edu</a></p></div>
+    <div class="card"><h3>LinkedIn</h3><p><a href="https://www.linkedin.com/in/sadia-afrin-mim-38a51919b" target="_blank" rel="noopener">sadia-afrin-mim-38a51919b</a></p></div>
+    <div class="card"><h3>GitHub</h3><p><a href="https://github.com/sadia-afrin-mim" target="_blank" rel="noopener">sadia-afrin-mim</a></p></div>
+  </div>
+  <div class="card block">
+    <h3>Affiliation</h3>
+    <p class="muted" style="margin:0">Department of Computer Science, George Mason University, Fairfax, Virginia</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span>© <span id="yr"></span> Sadia Afrin Mim</span>
+    <span>Ph.D. Student, Computer Science · George Mason University</span>
+  </div>
+</footer>
+
+<script>
+  const views = ['home','research','publications','experience','teaching','recognition','contact'];
+  function show(){
+    const id = (location.hash || '#home').slice(1);
+    const v = views.includes(id) ? id : 'home';
+    document.querySelectorAll('section.view').forEach(s => s.classList.toggle('active', s.id === 'view-' + v));
+    document.querySelectorAll('nav a').forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + v));
+    document.querySelector('nav').classList.remove('open');
+    window.scrollTo(0, 0);
+  }
+  window.addEventListener('hashchange', show);
+  show();
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
